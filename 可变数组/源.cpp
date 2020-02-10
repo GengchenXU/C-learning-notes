@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-//����һ������
+//创建一个数组
 Array array_creat(int init_size)
 {
 	Array a;
@@ -11,7 +11,7 @@ Array array_creat(int init_size)
 	return a;
 }
 
-//���տռ�
+//回收空间
 void array_free(Array* a)
 {
 	free(a->array);
@@ -19,13 +19,13 @@ void array_free(Array* a)
 	a->size = 0;
 }
 
-//Ŀǰ�ж��ٸ��ռ������   ��װ
+//目前有多少个空间可以用   封装
 int  array_size(Array* a)
 {
 	return a->size;
 }
 
-//�������鵱��ĳ����Ԫ:���Զ�Ҳ����д������������ֵҲ��������ֵ��
+//访问数组当中某个单元:可以读也可以写（即可以做左值也可以做右值）
 int* array_at(Array* a, int index)
 {
 	if (index >= a->size)
@@ -36,12 +36,12 @@ int* array_at(Array* a, int index)
 	return &(a->array[index]);
 }
 
-//��������
+//数组增容
 void array_inflate(Array* a, int more_size)
 {
-	int* p = (int*)malloc(sizeof(int) * (a->size + more_size));//�¿���һ�οռ�
+	int* p = (int*)malloc(sizeof(int) * (a->size + more_size));//新开辟一段空间
 	int i;
-	//��ԭ�ռ������ȫ���������¿ռ�
+	//将原空间的内容全部拷贝至新空间
 	for (i = 0; i < a->size; i++)
 	{
 		p[i] = a->array[i];

@@ -2,6 +2,13 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+/*const int BLOCK_SIZE = 2;
+typedef struct
+{
+    int* array;
+    int size;
+}Array;*/
+
 //创建一个数组
 Array array_creat(int init_size)
 {
